@@ -7,8 +7,8 @@ O projeto foi desenvolvido em C# .NET, criando um CRUD para cadastro dos itens x
 AGNES PINHEIRO PEREIRA - AgnesPPereira<br>
 EVANDRO LUIZ RODRIGUES DAMAZIO - evandroluizrd <br>
 ISMAEL DAMASCENO TRISTÃO - IsmaelDamasceno<br>
-Leonardo Da Cruz Ramos - leoleojogos<br>
-...
+LEONARDO DA CRUZ RAMOS - leoleojogos<br>
+GABRIELA DE SOUZA GORRESE - GabrielaGorrese<br>
 
 ### Modelo Físico
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
