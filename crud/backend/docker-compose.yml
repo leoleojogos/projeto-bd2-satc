@@ -1,0 +1,32 @@
+---
+version: "1.0"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: ./.env
+    volumes:
+      - .:/app
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PORT: ${DB_PORT}
+    healthcheck:
+      test: pg_isready -U ${DB_USER}
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+volumes:
+  db-data: null
