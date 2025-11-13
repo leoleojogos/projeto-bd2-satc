@@ -1,4 +1,4 @@
-## Projeto Sistema de Atividades Especiais - Manutenção de veículos
+## Projeto Sistema de Atividades Especiais - Sistema de manutenção de veículos
 
 Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema XYZ.
 O projeto foi desenvolvido em C# .NET, criando um CRUD para cadastro dos itens xyz, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada entity framework e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
@@ -14,7 +14,7 @@ GABRIELA DE SOUZA GORRESE - GabrielaGorrese<br>
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
 Arquivo fonte: [Modelo Fisico](https://dbdiagram.io/d/6561325e3be1495787b1c71a).<br>
 
-![image](https://github.com/jlsilva01/projeto_final_bd2_satc_2023/assets/484662/1fefa9fd-868c-4209-8cc5-d32cd73fa46d)
+![image](<img width="1251" height="710" alt="image" src="https://github.com/user-attachments/assets/5a8cd68c-6941-4111-b748-d042bffb4c51" />)
   
 ### Dicionário de Dados
 As informações sobre as tabelas e índices foram documentados na planilha [template1.xlsx](dicionario_dados/template1.xlsx).
@@ -24,7 +24,7 @@ Para este projeto foi utilizado o banco de dados [Azure SQL](https://azure.micro
 Este é o procedimento para criação do banco de dados Azure SQL [Criando SQL Azure serverless no Azure gratuito - Sem cartão de crédito](https://github.com/jlsilva01/sql-azure-satc).
 
 ### Referências Bibliográticas
-Colocar aqui as referencias de artigos, sites, outros repositórios e livros que usou para o projeto.
+Site usado para geração do modelo físico: https://dbdiagram.io/
 
 Abaixo, segue os scripts SQL separados por tipo:
 + [Tabelas](scripts/ddl/tabelas)
@@ -35,21 +35,30 @@ Abaixo, segue os scripts SQL separados por tipo:
 + [DML](scripts/dml)
 
 ### Código Fonte do CRUD
-- Linguagem de Programação C# .NET.<br>
-- Framework .NET 4.6
-- Projeto Windows Forms
-- Biblioteca Entity Framework para SQL Server (nativo)
+- Linguagem de Programação typescript.<br>
+- Backend: Framework express para comunicação com o banco de dados PostgreSQL, e gerenciamendo de rotas HTTP
+- Frontend: nodejs com <lib-server> e axios para comunicação com api, tsc para transpilação
 
-### Passos para execução do CRUD
+### Execução ([frontend](crud/frontend))
+#### Requisitos
+* Node e npm instalados na máquina
+--  Verificar instalação do npm: `npm -v`
+--  Verificar instalação do node: `node -v`
 
-1. Criar banco de dados pelo docker.
-```
-docker run xyz
-```
-2. ...
-   
+#### Passos
+1. Acesse a pasta do projeto [frontend](crud/frontend): `cd crud/frontend`
+1. Na pasta do frontend, execute:
+   -- `npm install` Instala as dependências do node
+   -- `npm start` Inicia o servidor html
 
-[Codigo Fonte](crud/)
+### Execução ([backend](crud/backend))
+#### Requisitos
+* docker daemon e docker maanger
+#### Passos
+1. Acesse a pasta do projeto [backend](crud/backend): `cd crud/backend`
+
+[Codigo Fonte frontend](crud/frontend)
+[Codigo Fonte backend](crud/backend)
 
 ### Relatório Final
-O relatório final está disponível no arquivo [relatorio-final/template1.docx](relatorio/template1.docx).
+O relatório final está disponível no arquivo [relatorio-final/final-report.docx](relatorio/final-report.docx).
