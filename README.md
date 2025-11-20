@@ -14,7 +14,7 @@ GABRIELA DE SOUZA GORRESE - GabrielaGorrese<br>
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
 Arquivo fonte: [Modelo Fisico](modelo_fisico/modelofisico.png).<br>
 
-![image](modelo_fisico/modelofisico.png)
+![image](modelo_fisico/modelofisico3.0.png)
   
 ### Dicionário de Dados
 As informações sobre as tabelas e índices foram documentados na planilha [template1.xlsx](dicionario_dados/template1.xlsx).
