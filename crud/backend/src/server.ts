@@ -1,20 +1,26 @@
 import express from 'express';
-import serviceOrderRouter from './rotuers/app.controller.js';
+import dotenv from 'dotenv';
+import { ordemServicoRouter } from './routers/app.controller.js';
+import { getDbPool } from './config/db.js';
 
-const hostname = process.env.HTTP_HOST || 'localhost';
-const port = process.env.HTTP_PORT ? Number(process.env.HTTP_PORT) : 3000;
-
-console.log(`Starting server with configuration: HTTP_HOST=${hostname}, HTTP_PORT=${port}`);
+dotenv.config();
 
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Server is running!');
-});
-app.use("/service-order", serviceOrderRouter);
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+// test the DB connection early
+getDbPool().catch(() => {
+  console.error("Failed to connect to the database on startup.");
+  process.exit(1);
 });
 
-export default app;
+app.get("/", (_, res) => res.send("API is running"));
+
+app.use("/ordem-servico", ordemServicoRouter);
+
+const PORT = Number(process.env.HTTP_PORT) || 3000;
+const HOST = process.env.HTTP_HOST || "localhost";
+
+app.listen(PORT, HOST, () => {
+    console.log(`Server running at http://${HOST}:${PORT}`);
+});
