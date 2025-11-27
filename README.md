@@ -1,7 +1,14 @@
 ## Projeto Sistema de Atividades Especiais - Sistema de manutenção de veículos
 
-Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema XYZ.
-O projeto foi desenvolvido em C# .NET, criando um CRUD para cadastro dos itens xyz, onde a aplicacao faz conexão com o banco de dados através de uma biblioteca chamada entity framework e realiza operações de adição, aualização e deleção dos dados, usando todos os conceitos e dinâmicas práticas de SQL desenvolvidas em aula.
+Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema manutenção de veículos.
+O projeto foi desenvolvido em Typescript com Nodejs.
+
+## Frontend
+O frontend utiliza [React](https://pt-br.legacy.reactjs.org/) e [TailwindCss](https://tailwindcss.com/) para a interface visual, utilizando o bundler [Vite](https://vite.dev/)
+
+## Backend
+O backend utiliza [Express](https://expressjs.com/pt-br/) para abstração de criação de interface HTTP, e [node-mssql](https://tediousjs.github.io/node-mssql/) para a conexão com o banco de dados.
+Localmente o backend é hosteado utilizando [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/)
 
 ### Integrantes
 AGNES PINHEIRO PEREIRA - AgnesPPereira<br>
@@ -56,6 +63,10 @@ Abaixo, segue os scripts SQL separados por tipo:
 * docker daemon e docker maanger
 #### Passos
 1. Acesse a pasta do projeto [backend](crud/backend): `cd crud/backend`
+2. Crie um arquivo .env com as configurações necessárias (confira o [.env.example](crud/backend/.env.example) para ver as variáveis necessárias)
+> [!Warning]
+> A porta utilizada para o backend precisa ser `3000` já que esta é a utilizada pelo frontend
+3. Execute os containers: `docker compose up --build` (inicia o container do backend e banco de dados)
 
 [Codigo Fonte frontend](crud/frontend)
 [Codigo Fonte backend](crud/backend)
