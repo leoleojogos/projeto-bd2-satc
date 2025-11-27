@@ -2,11 +2,14 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { ordemServicoRouter } from './routers/app.controller.js';
 import { getDbPool } from './config/db.js';
+import cors from 'cors';
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 // test the DB connection early
 getDbPool().catch(() => {
