@@ -30,9 +30,6 @@ As informações sobre as tabelas e índices foram documentados na planilha [tem
 Para este projeto foi utilizado o banco de dados [Azure SQL](https://azure.microsoft.com/pt-br/products/azure-sql/database) <br>
 Este é o procedimento para criação do banco de dados Azure SQL [Criando SQL Azure serverless no Azure gratuito - Sem cartão de crédito](https://github.com/jlsilva01/sql-azure-satc).
 
-### Referências Bibliográticas
-Site usado para geração do modelo físico: https://dbdiagram.io/
-
 Abaixo, segue os scripts SQL separados por tipo:
 + [Tabelas](scripts/ddl/tabelas)
 + [Índices](scripts/ddl/indices)
@@ -65,11 +62,17 @@ Abaixo, segue os scripts SQL separados por tipo:
 1. Acesse a pasta do projeto [backend](crud/backend): `cd crud/backend`
 2. Crie um arquivo .env com as configurações necessárias (confira o [.env.example](crud/backend/.env.example) para ver as variáveis necessárias)
 > [!Warning]
-> A porta utilizada para o backend precisa ser `3000` já que esta é a utilizada pelo frontend
+> A porta utilizada para o backend (`HTTP_PORT`) precisa ser `3000` já que esta é a utilizada pelo frontend
 3. Execute os containers: `docker compose up --build` (inicia o container do backend e banco de dados)
+> [!TIP]
+> Em distribuições do windows é recomendado rodar o docker dentro do [wsl2](https://learn.microsoft.com/en-us/windows/wsl/about). Para um guia tratuito de instalação do wsl2 e docker no windows, acesse: [wsl2-docker-quickstart](https://github.com/codeedu/wsl2-docker-quickstart)
 
 [Codigo Fonte frontend](crud/frontend)
 [Codigo Fonte backend](crud/backend)
 
 ### Relatório Final
 O relatório final está disponível no arquivo [relatorio-final/final-report.docx](relatorio/final-report.docx).
+
+### Referências Bibliográticas
+Site usado para geração do modelo físico: https://dbdiagram.io/
+
