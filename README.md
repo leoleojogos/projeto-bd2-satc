@@ -74,5 +74,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 O relatório final está disponível no arquivo [relatorio-final/final-report.docx](relatorio/final-report.docx).
 
 ### Referências Bibliográticas
-Site usado para geração do modelo físico: https://dbdiagram.io/
+https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+https://blog.logrocket.com/express-typescript-node/
+https://github.com/codeedu/wsl2-docker-quickstart
 
