@@ -1,0 +1,2 @@
+CREATE UNIQUE NONCLUSTERED INDEX UQ_OS_Peca 
+ON OS_Peca (id_os, id_peca);
