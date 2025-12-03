@@ -24,7 +24,7 @@ Arquivo fonte: [Modelo Fisico](modelo_fisico/modelofisico.png).<br>
 ![image](modelo_fisico/modelofisico3.0.png)
   
 ## Dicionário de Dados
-As informações sobre as tabelas e índices foram documentados na planilha [dicionário.xlsx](dicionario_dados/dicionário.xlsx).
+As informações sobre as tabelas e índices foram documentados na planilha [dicionário_versão_final](dicionario_dados/dicionário_versão_final).
 
 ## Scripts SQL
 Para este projeto foi utilizado o banco de dados [SQL Server]([https://azure.microsoft.com/pt-br/products/azure-sql/database](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)) <br>
@@ -75,7 +75,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 [Codigo Fonte backend](crud/backend)
 
 ### Relatório Final
-O relatório final está disponível no arquivo [relatorio-final/final-report.docx](relatorio/final-report.docx).
+O relatório final está disponível no arquivo [relatório_final_completo](relatorio/relatório_final_completo).
 
 ### Referências Bibliográticas
 https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver17&tabs=cli&pivots=cs1-bash
