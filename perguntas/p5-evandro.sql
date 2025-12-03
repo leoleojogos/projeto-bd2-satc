@@ -1,5 +1,6 @@
 
---Como impedir que uma ordem de serviço seja concluída enquanto houver serviços pendentes?
+-- 6 - Implementar um sistema de validação que impeça a conclusão de Ordens de Serviço enquanto houver serviços pendentes de precificação, 
+-- garantindo que todas as transações estejam devidamente registradas financeiramente antes do fechamento.
 
 
 CREATE TRIGGER trg_bloqueia_conclusao_os
