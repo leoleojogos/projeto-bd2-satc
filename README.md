@@ -75,7 +75,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 [Codigo Fonte backend](crud/backend)
 
 ### Relatório Final
-O relatório final está disponível no arquivo [relatório](relatorio-final/relatório_final_completo).
+O relatório final está disponível no arquivo [relatório](relatorio-final/relatório_final_completo.docx).
 
 ### Referências Bibliográticas
 https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver17&tabs=cli&pivots=cs1-bash
