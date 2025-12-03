@@ -1,4 +1,4 @@
-## Projeto Sistema de Atividades Especiais - Sistema de manutenção de veículos
+## Projeto Sistema de manutenção de veículos
 
 Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema manutenção de veículos.
 O projeto foi desenvolvido em Typescript com Nodejs.
