@@ -62,7 +62,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 1. Acesse a pasta do projeto [backend](crud/backend): `cd crud/backend`
 2. Crie um arquivo .env com as configurações necessárias (confira o [.env.example](crud/backend/.env.example) para ver as variáveis necessárias)
 > [!Warning]
-> A porta utilizada para o backend (`HTTP_PORT`) precisa ser `3000` já que esta é a utilizada pelo frontend
+> A porta utilizada para o backend (`HTTP_PORT`) precisa ser `3600` já que esta é a utilizada pelo frontend
 3. Execute os containers: `docker compose up --build` (inicia o container do backend e banco de dados)
 > [!TIP]
 > Em distribuições do windows é recomendado rodar o docker dentro do [wsl2](https://learn.microsoft.com/en-us/windows/wsl/about). Para um guia tratuito de instalação do wsl2 e docker no windows, acesse: [wsl2-docker-quickstart](https://github.com/codeedu/wsl2-docker-quickstart)
