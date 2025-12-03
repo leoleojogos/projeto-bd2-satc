@@ -77,4 +77,6 @@ O relatório final está disponível no arquivo [relatorio-final/final-report.do
 https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
 https://blog.logrocket.com/express-typescript-node/
 https://github.com/codeedu/wsl2-docker-quickstart
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-auto-closing-issues
+https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue
 
