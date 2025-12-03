@@ -11,11 +11,11 @@ O backend utiliza [Express](https://expressjs.com/pt-br/) para abstração de cr
 Localmente o backend é hosteado utilizando [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/)
 
 ### Integrantes
-AGNES PINHEIRO PEREIRA - AgnesPPereira<br>
-EVANDRO LUIZ RODRIGUES DAMAZIO - evandroluizrd <br>
-ISMAEL DAMASCENO TRISTÃO - IsmaelDamasceno<br>
-LEONARDO DA CRUZ RAMOS - leoleojogos<br>
-GABRIELA DE SOUZA GORRESE - GabrielaGorrese<br>
+AGNES PINHEIRO PEREIRA - [AgnesPPereira]([url](https://github.com/AgnesPPereira))<br>
+EVANDRO LUIZ RODRIGUES DAMAZIO - [evandroluizrd]([url](https://github.com/evandroluizrd)) <br>
+ISMAEL DAMASCENO TRISTÃO - [IsmaelDamasceno]([url](https://github.com/IsmaelDamasceno))<br>
+LEONARDO DA CRUZ RAMOS - [leoleojogos]([url](https://github.com/leoleojogos))<br>
+GABRIELA DE SOUZA GORRESE - [GabrielaGorrese]([url](https://github.com/GabrielaGorrese))<br>
 
 ### Modelo Físico
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
