@@ -3,6 +3,7 @@
 1 - Quais os três clientes com o maior número de veículos distintos que realizaram manutenções preventivas nos últimos 8 meses, por mecânicos com especialidade em "Motor"?
 Na tabela resultado, para cada um desses três clientes, mostrar o nome completo, total de veículos, número total de manutenções preventivas, e o valor médio gasto por veículo.
 Além disso, atribuir a cada cliente um nível de portfólio (Grande, Médio ou Pequeno) baseando-se no número total de veículos
+    
 -- Primeiro filtro todas as manutenções preventivas feitas por mecânicos de Motor
 WITH manutencoes AS (
     SELECT 
