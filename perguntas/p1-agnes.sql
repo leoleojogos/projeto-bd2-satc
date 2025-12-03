@@ -1,60 +1,89 @@
 
 
-1 - Quais os três clientes com o maior número de veículos distintos que realizaram manutenções preventivas nos últimos 8 meses, por mecânicos com especialidade em "Motor e Transmissão"?
-Na tabela resultado, para cada um desses três clientes, mostrar o nome completo, total de veículos, número total de manutenções preventivas, e o valor médio gasto por veículo.
-Além disso, atribuir a cada cliente um nível de portfólio (Grande, Médio ou Pequeno) baseando-se no número total de veículos
+-- 1 - Quais os três clientes que realizaram manutenções preventivas nos últimos 5 meses, por mecânicos com especialidade em "Motor e Transmissão" ou "Suspensão e Freios"?
+-- Na tabela resultado, para cada um desses três clientes, mostrar o nome completo, total de veículos, número total de manutenções preventivas, e o valor médio gasto por veículo.
+-- Além disso, atribuir a cada cliente um nível de portfólio (Grande, Médio ou Pequeno) baseando-se no número total de veículos
+
+-- Cria uma nova função
+CREATE FUNCTION fn_Top3ClientesManutencoes()
+RETURNS TABLE
+AS
+RETURN 
+(
+    -- Seleciona os 3 primeiros clientes (TOP 3) que mais fizeram manutenções
+    SELECT TOP 3
     
--- Primeiro filtro todas as manutenções preventivas feitas por mecânicos de Motor
-WITH manutencoes AS (
-    SELECT 
-        c.id_cliente,                -- pego o cliente dono do veículo
-        v.id_veiculo,                -- identifico qual veículo fez a manutenção
-        os.id_os,                    -- pego a ordem de serviço
-        SUM(oss.quantidade * oss.valor_unitario) AS valor_total  -- calculo o valor gasto na OS
-    FROM OrdemServico os
-    JOIN Veiculo v ON v.id_veiculo = os.id_veiculo        -- ligo OS ao veículo
-    JOIN Cliente c ON c.id_cliente = v.id_cliente         -- e o veículo ao cliente
-    JOIN Mecanico m ON m.id_mecanico = os.id_mecanico     -- e identifico o mecânico que fez
-    JOIN OS_Servico oss ON oss.id_os = os.id_os           -- pego os serviços feitos na OS
-    JOIN Servico s ON s.id_servico = oss.id_servico       -- e a descrição dos serviços
-    WHERE 
-        m.especialidade = 'Motor'                         -- só mecânicos especializados em motor
-        AND s.descricao ILIKE '%prevent%'                 -- serviços preventivos
-        AND os.data_saida >= CURRENT_DATE - INTERVAL '8 MONTH'   -- últimos 8 meses
-        AND os.status = 'Concluída'                       -- OS concluídas
-    GROUP BY c.id_cliente, v.id_veiculo, os.id_os         -- agrupo para somar o valor da OS
-),
-
--- Aqui faço os totais por cliente
-agregado AS (
-    SELECT
-        id_cliente,
-        COUNT(DISTINCT id_veiculo) AS total_veiculos,   -- quantos veículos diferentes o cliente trouxe
-        COUNT(id_os) AS total_manutencoes,              -- quantas preventivas ele fez
-        AVG(valor_total) AS valor_medio_por_veiculo     -- média de gasto por veículo
-    FROM manutencoes
-    GROUP BY id_cliente
-),
-
--- Classifico o cliente conforme o número de veículos
-classificado AS (
-    SELECT 
-        c.id_cliente,
-        c.nome,
-        a.total_veiculos,
-        a.total_manutencoes,
-        a.valor_medio_por_veiculo,
-        CASE
-            WHEN total_veiculos >= 10 THEN 'Grande'      -- muitos veículos
-            WHEN total_veiculos BETWEEN 5 AND 9 THEN 'Médio'
-            ELSE 'Pequeno'                              -- poucos veículos
-        END AS nivel_portfolio
+        c.nome AS [Nome Completo],
+        COUNT(DISTINCT v.id_veiculo) AS [Total de Veículos],
+        COUNT(DISTINCT os.id_os) AS [Número Total de Manutenções Preventivas],
+        
+        -- Calcula o valor médio gasto por veículo:
+        CAST(
+            CASE 
+                WHEN COUNT(DISTINCT v.id_veiculo) > 0 
+                -- Soma: valor total dos serviços + valor total das peças
+                -- Divide pelo número de veículos para obter a média
+                THEN SUM(COALESCE(os_serv.valor_total, 0) + COALESCE(os_pec.valor_total, 0)) / COUNT(DISTINCT v.id_veiculo)
+                ELSE 0
+            END AS DECIMAL(10,2)
+        ) AS [Valor Médio Gasto por Veículo],
+        
+        COUNT(DISTINCT m.especialidade) AS [Especialidades Diferentes Utilizadas],
+        
+        -- Classifica o portfólio do cliente baseado no número de veículos:
+        CASE 
+            WHEN COUNT(DISTINCT v.id_veiculo) >= 5 THEN 'Grande'     
+            WHEN COUNT(DISTINCT v.id_veiculo) >= 3 THEN 'Médio'     
+            ELSE 'Pequeno'
+        END AS [Nível de Portfólio]
+    
     FROM Cliente c
-    JOIN agregado a ON a.id_cliente = c.id_cliente       -- junto com os totais calculados
-)
+    INNER JOIN Veiculo v ON c.id_cliente = v.id_cliente
+    INNER JOIN OrdemServico os ON v.id_veiculo = os.id_veiculo
+    INNER JOIN Mecanico m ON os.id_mecanico = m.id_mecanico
+    INNER JOIN OS_Servico oss ON os.id_os = oss.id_os
+    INNER JOIN Servico s ON oss.id_servico = s.id_servico
+    
+    LEFT JOIN (
+        SELECT 
+            id_os,
+            SUM(quantidade * valor_unitario) AS valor_total
+        FROM OS_Servico
+        GROUP BY id_os 
+    ) os_serv ON os.id_os = os_serv.id_os
+    
+    LEFT JOIN (
+        SELECT 
+            id_os,
+            SUM(quantidade * valor_unitario) AS valor_total
+        FROM OS_Peca
+        GROUP BY id_os
+    ) os_pec ON os.id_os = os_pec.id_os
 
--- Aqui pego só os 3 primeiros clientes
-SELECT *
-FROM classificado
-ORDER BY total_veiculos DESC
-LIMIT 3;
+    WHERE 
+        m.especialidade IN ('Motor e Transmissão', 'Suspensão e Freios')
+        AND os.data_entrada >= DATEADD(MONTH, -5, '2025-12-01')
+        AND os.status = 'Concluída'
+        AND s.descricao IN (
+            'Troca de Óleo e Filtro',           
+            'Alinhamento e Balanceamento',     
+            'Troca de Pastilhas de Freio',     
+            'Reparo na Suspensão'              
+        )
+    
+    GROUP BY c.id_cliente, c.nome
+    HAVING COUNT(DISTINCT os.id_os) > 0
+    ORDER BY 
+        COUNT(DISTINCT os.id_os) DESC,  
+        SUM(COALESCE(os_serv.valor_total, 0) + COALESCE(os_pec.valor_total, 0)) DESC  
+)
+GO
+
+-- Executa a função e mostra todos os resultados
+SELECT * FROM fn_Top3ClientesManutencoes();
+
+-- SE DER ERRO NA HORA QUE JÁ EXISTE ESSA FUNÇÃO!
+-- Remove a função se ela já existir no banco de dados
+IF OBJECT_ID('fn_Top3ClientesManutencoes', 'TF') IS NOT NULL
+    DROP FUNCTION fn_Top3ClientesManutencoes;
+GO
