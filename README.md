@@ -40,8 +40,12 @@ Abaixo, segue os scripts SQL separados por tipo:
 
 ### Código Fonte do CRUD
 - Linguagem de Programação typescript.<br>
-- Backend: Framework express para comunicação com o banco de dados PostgreSQL, e gerenciamendo de rotas HTTP
-- Frontend: nodejs com <lib-server> e axios para comunicação com api, tsc para transpilação
+- Backend: Framework [Express](https://expressjs.com/pt-br/) para gerenciamendo de rotas HTTP, e [node-mssql](https://tediousjs.github.io/node-mssql/) para comunicação com o banco de dados SQL Server.
+- Frontend:
+ * Typescript para programação e tipagem mais robusta e segura.
+ * Nodejs com Vite e react para implementação visual, e serviço SPA (roteado por react-router).
+ * Axios para comunicação com api por meio de requisições HTTP.
+ * tsc para transpilação de typescript.
 
 ### Execução ([frontend](crud/frontend))
 #### Requisitos
@@ -74,7 +78,9 @@ Abaixo, segue os scripts SQL separados por tipo:
 O relatório final está disponível no arquivo [relatorio-final/final-report.docx](relatorio/final-report.docx).
 
 ### Referências Bibliográticas
-https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver17&tabs=cli&pivots=cs1-bash
+https://medium.com/@techworldthink/how-to-install-and-configure-microsoft-sql-server-on-docker-running-on-linux-76b8093bb77f
+https://petri.com/sql-server-docker/
 https://blog.logrocket.com/express-typescript-node/
 https://github.com/codeedu/wsl2-docker-quickstart
 https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-auto-closing-issues
