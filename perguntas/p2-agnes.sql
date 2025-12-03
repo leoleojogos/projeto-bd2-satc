@@ -1,6 +1,7 @@
 2 - Quais os cinco mecânicos ativos com o maior número de ordens de serviço concluídas nos últimos 6 meses, considerando apenas serviços com valor superior a R$ 100?
 Na tabela resultado, para cada um desses mecânicos, mostrar o nome completo, total de ordens, valor total faturado, e o tempo médio de conclusão.
 Além disso, atribuir a cada mecânico uma categoria de produtividade (Alta, Média ou Baixa) baseando-se no número total de ordens concluídas.
+    
 -- Primeiro calculo as OS concluídas nos últimos 6 meses com valor acima de 100 reais
 WITH ordens_validas AS (
     SELECT
