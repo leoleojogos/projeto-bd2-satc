@@ -1,47 +1,43 @@
 --Como impedir que uma peça seja adicionada à ordem de serviço quando a quantidade solicitada excede o estoque disponível?
 
-CREATE TRIGGER trg_bloqueia_conclusao_os
-BEFORE UPDATE ON OrdemServico
+CCREATE TRIGGER trg_verifica_estoque_peca
+BEFORE INSERT ON OS_Peca
 FOR EACH ROW
 BEGIN
-    -- Só validar se o novo status for 'Concluída'
-    
-    IF NEW.status = 'Concluída' THEN
-        
-        DECLARE pendentes INT;
+    DECLARE estoque_atual INT;
 
-        -- Quantos serviços da OS ainda estão sem valor_unitario?
-        
-        SELECT COUNT(*)
-        INTO pendentes
-        FROM OS_Servico
-        WHERE id_os = NEW.id_os
-          AND valor_unitario IS NULL;
+    -- Obter o estoque atual da peça
+    SELECT estoque_atual
+    INTO estoque_atual
+    FROM Peca
+    WHERE id_peca = NEW.id_peca;
 
-        -- Se existir algum pendente, bloquear
-        IF pendentes > 0 THEN
-            SIGNAL SQLSTATE '45000'
-                SET MESSAGE_TEXT = 'Erro: A OS não pode ser concluída pois existem serviços pendentes.';
-        END IF;
-
+    -- Se a quantidade solicitada for maior que o estoque, bloquear
+    IF NEW.quantidade > estoque_atual THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Erro: quantidade solicitada excede o estoque disponível da peça.';
     END IF;
 END;
+
 
 
 --CONSULTA — Ordens que ainda possuem serviços pendentes
 
 SELECT 
-    os.id_os,
-    c.nome AS nome_cliente,
-    m.nome AS nome_mecanico,
-    os.data_entrada,
-    COUNT(oss.id_servico) AS servicos_pendentes
-FROM OrdemServico os
-JOIN Veiculo v ON v.id_veiculo = os.id_veiculo
-JOIN Cliente c ON c.id_cliente = v.id_cliente
-JOIN Mecanico m ON m.id_mecanico = os.id_mecanico
-JOIN OS_Servico oss ON oss.id_os = os.id_os
-WHERE oss.valor_unitario IS NULL
-  AND os.data_entrada >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
-GROUP BY os.id_os, nome_cliente, nome_mecanico, os.data_entrada
-ORDER BY os.data_entrada ASC;
+    p.descricao,
+    p.fabricante,
+    SUM(op.quantidade) AS total_utilizada,
+    SUM(op.quantidade * op.valor_unitario) AS valor_total,
+    CASE
+        WHEN SUM(op.quantidade) > 50 THEN 'Alta'
+        WHEN SUM(op.quantidade) >= 20 THEN 'Média'
+        ELSE 'Baixa'
+    END AS demanda
+FROM OS_Peca op
+JOIN Peca p ON p.id_peca = op.id_peca
+JOIN OrdemServico os ON os.id_os = op.id_os
+WHERE os.data_entrada >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
+GROUP BY p.id_peca, p.descricao, p.fabricante
+ORDER BY total_utilizada DESC
+LIMIT 3;
+
