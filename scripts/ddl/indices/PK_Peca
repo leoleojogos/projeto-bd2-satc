@@ -1,0 +1,2 @@
+CREATE CLUSTERED INDEX PK_Peca 
+ON Peca (id_peca);
