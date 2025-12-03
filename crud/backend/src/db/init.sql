@@ -105,3 +105,82 @@ CREATE TABLE Agendamento (
     FOREIGN KEY (id_veiculo) REFERENCES Veiculo(id_veiculo),
     FOREIGN KEY (id_mecanico) REFERENCES Mecanico(id_mecanico),
 );
+
+
+CREATE UNIQUE NONCLUSTERED INDEX UQ_OS_Peca 
+ON OS_Peca (id_os, id_peca);
+
+CREATE UNIQUE NONCLUSTERED INDEX UQ_OS_Servico
+ON OS_Servico (id_os, id_servico);
+
+CREATE NONCLUSTERED INDEX idx_agendamento_cliente 
+ON Agendamento (id_cliente);
+
+CREATE NONCLUSTERED INDEX idx_agendamento_data 
+ON Agendamento (data_agendada, hora_agendada);
+
+CREATE NONCLUSTERED INDEX idx_agendamento_mecanico 
+ON Agendamento (id_mecanico);
+
+CREATE NONCLUSTERED INDEX idx_agendamento_status 
+ON Agendamento (status_agendamento);
+
+CREATE NONCLUSTERED INDEX idx_cliente_nome 
+ON Cliente (nome);
+
+CREATE NONCLUSTERED INDEX idx_mecanico_ativo 
+ON Mecanico (ativo);
+
+CREATE NONCLUSTERED INDEX idx_mecanico_nome 
+ON Mecanico (nome);
+
+CREATE NONCLUSTERED INDEX idx_mecanico_ordem 
+ON OrdemServico (id_mecanico, id_os);
+
+CREATE NONCLUSTERED INDEX idx_os_pagamento 
+ON OrdemServico (id_veiculo, id_os);
+
+CREATE NONCLUSTERED INDEX idx_os_peca_os 
+ON OS_Peca (id_os);
+
+CREATE NONCLUSTERED INDEX idx_os_peca_peca 
+ON OS_Peca (id_peca);
+
+CREATE NONCLUSTERED INDEX idx_os_peca_valor
+ON OS_Peca (id_os, valor_unitario, quantidade);
+
+CREATE NONCLUSTERED INDEX idx_os_servico_os 
+ON OS_Servico (id_os);
+
+CREATE NONCLUSTERED INDEX idx_os_servico_servico 
+ON OS_Servico (id_servico);
+
+CREATE NONCLUSTERED INDEX idx_os_servico_valor
+ON OS_Servico (id_os, valor_unitario, quantidade);
+
+CREATE NONCLUSTERED INDEX idx_pagamento_data_status 
+ON Pagamento (data_pagamento, status_pagamento);
+
+CREATE NONCLUSTERED INDEX idx_pagamento_metodo 
+ON Pagamento (metodo_pagamento);
+
+CREATE NONCLUSTERED INDEX idx_pagamento_status_data 
+ON Pagamento (status_pagamento, data_pagamento DESC);
+
+CREATE NONCLUSTERED INDEX idx_peca_descricao 
+ON Peca (descricao);
+
+CREATE NONCLUSTERED INDEX idx_peca_estoque 
+ON Peca (estoque_atual, estoque_minimo)
+
+CREATE NONCLUSTERED INDEX idx_peca_valor 
+ON Peca (valor_unitario);
+
+CREATE NONCLUSTERED INDEX idx_servico_ativo 
+ON Servico (ativo);
+
+CREATE NONCLUSTERED INDEX idx_servico_descricao 
+ON Servico (descricao);
+
+CREATE NONCLUSTERED INDEX idx_veiculo_placa 
+ON Veiculo (placa);
