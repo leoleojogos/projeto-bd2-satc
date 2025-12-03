@@ -1,5 +1,5 @@
 
--- 6 - Implementar um sistema de validação que impeça a conclusão de Ordens de Serviço enquanto houver serviços pendentes de precificação, 
+-- 5 - Implementar um sistema de validação que impeça a conclusão de Ordens de Serviço enquanto houver serviços pendentes de precificação, 
 -- garantindo que todas as transações estejam devidamente registradas financeiramente antes do fechamento.
 
 
