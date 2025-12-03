@@ -2,8 +2,7 @@
 -- Na tabela resultado, para cada uma dessas peças, mostrar a descrição, fabricante, quantidade total utilizada, valor total gerado e valor médio por utilização.
 -- Além disso, atribuir a cada peça um nível de rotatividade (Alta, Média ou Baixa) baseando-se na quantidade total utilizada.
 
--- Função criada para classificar a rotatividade de uma peça com base na quantidade utilizada
--- Recebe a quantidade total utilizada e devolve: Alta, Média ou Baixa
+
 CREATE OR ALTER FUNCTION dbo.fn_classifica_rotatividade_peca (@qtd_total INT)
 RETURNS VARCHAR(20)
 AS
@@ -27,8 +26,6 @@ BEGIN
 END;
 GO
 
--- Procedure que gera um relatório das 5 peças mais utilizadas nos últimos 9 meses
--- Calcula quantidade total utilizada, valor total, valor médio e nível de rotatividade
 CREATE OR ALTER PROCEDURE dbo.sp_relatorio_rotatividade_pecas
 AS
 BEGIN
@@ -79,6 +76,7 @@ EXEC dbo.sp_relatorio_rotatividade_pecas;
 
 
 -- Explicação geral:
--- A stored procedure sp_relatorio_rotatividade_pecas encapsula a lógica solicitada.
--- Ela consulta peças usadas nos últimos 9 meses, calcula total utilizado, valores financeiros e aplica a função fn_classifica_rotatividade_peca.
--- Procedures são usadas porque a pergunta exige a criação via ALTER PROCEDURE e porque centralizam a regra de consulta, facilitando manutenção e execução repetida.
+-- A função foi criada para encapsular a lógica de classificação da rotatividade de peças.
+-- Ela foi centralizada na função fn_classifica_rotatividade_peca, que recebe o total utilizado e devolve a classificação (Alta, Média ou Baixa).
+-- Procedure  gera um relatório das 5 peças mais utilizadas nos últimos 9 meses
+-- Calcula quantidade total utilizada, valor total, valor médio e nível de rotatividade
