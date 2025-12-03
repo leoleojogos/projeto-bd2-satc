@@ -1,4 +1,4 @@
-## Projeto Sistema de manutenção de veículos
+# Projeto Sistema de manutenção de veículos
 
 Este projeto consiste na criação de um modelo físico de um banco de dados para um sistema manutenção de veículos.
 O projeto foi desenvolvido em Typescript com Nodejs.
@@ -10,25 +10,24 @@ O frontend utiliza [React](https://pt-br.legacy.reactjs.org/) e [TailwindCss](ht
 O backend utiliza [Express](https://expressjs.com/pt-br/) para abstração de criação de interface HTTP, e [node-mssql](https://tediousjs.github.io/node-mssql/) para a conexão com o banco de dados.
 Localmente o backend é hosteado utilizando [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/)
 
-### Integrantes
+## Integrantes
 AGNES PINHEIRO PEREIRA - [AgnesPPereira]([url](https://github.com/AgnesPPereira))<br>
 EVANDRO LUIZ RODRIGUES DAMAZIO - [evandroluizrd]([url](https://github.com/evandroluizrd)) <br>
 ISMAEL DAMASCENO TRISTÃO - [IsmaelDamasceno]([url](https://github.com/IsmaelDamasceno))<br>
 LEONARDO DA CRUZ RAMOS - [leoleojogos]([url](https://github.com/leoleojogos))<br>
 GABRIELA DE SOUZA GORRESE - [GabrielaGorrese]([url](https://github.com/GabrielaGorrese))<br>
 
-### Modelo Físico
+## Modelo Físico
 Utilizamos a ferramenta de modelagem de dados [dbdiagram.io](https://dbdiagram.io/) para criação do modelo físico do banco de dados, para posterior exportação dos scripts DDL das tabelas e relacionamentos.<br>
 Arquivo fonte: [Modelo Fisico](modelo_fisico/modelofisico.png).<br>
 
 ![image](modelo_fisico/modelofisico3.0.png)
   
-### Dicionário de Dados
+## Dicionário de Dados
 As informações sobre as tabelas e índices foram documentados na planilha [dicionário.xlsx](dicionario_dados/dicionário.xlsx).
 
-### Scripts SQL
-Para este projeto foi utilizado o banco de dados [Azure SQL](https://azure.microsoft.com/pt-br/products/azure-sql/database) <br>
-Este é o procedimento para criação do banco de dados Azure SQL [Criando SQL Azure serverless no Azure gratuito - Sem cartão de crédito](https://github.com/jlsilva01/sql-azure-satc).
+## Scripts SQL
+Para este projeto foi utilizado o banco de dados [SQL Server]([https://azure.microsoft.com/pt-br/products/azure-sql/database](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)) <br>
 
 Abaixo, segue os scripts SQL separados por tipo:
 + [Tabelas](scripts/ddl/tabelas)
@@ -38,7 +37,7 @@ Abaixo, segue os scripts SQL separados por tipo:
 + [Funções](scripts/ddl/funcoes)
 + [DML](scripts/dml)
 
-### Código Fonte do CRUD
+## Código Fonte do CRUD
 - Linguagem de Programação typescript.<br>
 - Backend: Framework [Express](https://expressjs.com/pt-br/) para gerenciamendo de rotas HTTP, e [node-mssql](https://tediousjs.github.io/node-mssql/) para comunicação com o banco de dados SQL Server.
 - Frontend:
@@ -47,7 +46,8 @@ Abaixo, segue os scripts SQL separados por tipo:
  * Axios para comunicação com api por meio de requisições HTTP.
  * tsc para transpilação de typescript.
 
-### Execução ([frontend](crud/frontend))
+## Execução
+### [frontend](crud/frontend)
 #### Requisitos
 * Node e npm instalados na máquina
 --  Verificar instalação do npm: `npm -v`
@@ -59,7 +59,7 @@ Abaixo, segue os scripts SQL separados por tipo:
    -- `npm install` Instala as dependências do node
    -- `npm start` Inicia o servidor html
 
-### Execução ([backend](crud/backend))
+### [backend](crud/backend)
 #### Requisitos
 * docker daemon e docker maanger
 #### Passos
