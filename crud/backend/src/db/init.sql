@@ -104,5 +104,4 @@ CREATE TABLE Agendamento (
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
     FOREIGN KEY (id_veiculo) REFERENCES Veiculo(id_veiculo),
     FOREIGN KEY (id_mecanico) REFERENCES Mecanico(id_mecanico),
-    CHECK (data_agendada >= CAST(GETDATE() AS DATE))
 );
