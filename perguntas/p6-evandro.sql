@@ -1,4 +1,5 @@
---Como impedir que uma peça seja adicionada à ordem de serviço quando a quantidade solicitada excede o estoque disponível?
+-- 6 - Implementar um controle de estoque que valide a disponibilidade de peças em tempo real durante o processo de venda,
+-- prevenindo alocações acima do disponível e gerando relatórios preditivos de reposição.
 
 CREATE TRIGGER trg_verifica_estoque_peca
 ON OS_Peca
