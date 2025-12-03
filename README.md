@@ -24,7 +24,7 @@ Arquivo fonte: [Modelo Fisico](modelo_fisico/modelofisico.png).<br>
 ![image](modelo_fisico/modelofisico3.0.png)
   
 ## Dicionário de Dados
-As informações sobre as tabelas e índices foram documentados na planilha [dicionário](dicionario_dados/dicionario_versao_final).
+As informações sobre as tabelas e índices foram documentados na planilha [dicionário](dicionario_dados/dicionário_versão_final.xlsx).
 
 ## Scripts SQL
 Para este projeto foi utilizado o banco de dados [SQL Server]([https://azure.microsoft.com/pt-br/products/azure-sql/database](https://www.microsoft.com/pt-br/sql-server/sql-server-downloads)) <br>
